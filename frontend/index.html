@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Analyzer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <span>AI</span> Resume Analyzer
+        </div>
+
+        <div class="nav-right">
+            <span>Smart Career Insights</span>
+        </div>
+    </header>
+
+
+    <main class="container">
+
+        <!-- Dashboard Statistics -->
+
+<section class="dashboard-stats">
+
+    <div class="stats-heading">
+        <h2>Dashboard Overview</h2>
+        <p>Your resume analysis performance at a glance.</p>
+    </div>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <div class="stat-icon">📄</div>
+            <h3>Total Analyses</h3>
+            <p id="totalAnalyses">0</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">📊</div>
+            <h3>Average Match Score</h3>
+            <p id="averageScore">0%</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🏆</div>
+            <h3>Best Match Score</h3>
+            <p id="bestScore">0%</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">📅</div>
+            <h3>Analyses Today</h3>
+            <p id="analysesToday">0</p>
+        </div>
+
+    </div>
+
+</section>
+
+        <section class="hero">
+            <h1>AI-Powered Resume Analyzer</h1>
+
+            <p>
+                Analyze your resume, identify skill gaps,
+                and discover how well you match a job.
+            </p>
+        </section>
+
+
+        <section class="analyzer-card">
+
+            <h2>Analyze Your Resume</h2>
+
+            <form id="analyzerForm">
+
+                <div class="form-group">
+                    <label for="resume">
+                        Upload Your Resume (PDF)
+                    </label>
+
+                    <input
+                        type="file"
+                        id="resume"
+                        accept=".pdf,application/pdf"
+                        required
+                    >
+
+                    <small>Only PDF files are supported.</small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="jobDescription">
+                        Job Description
+                    </label>
+
+                    <textarea
+                        id="jobDescription"
+                        rows="9"
+                        placeholder="Paste the job description here..."
+                        required
+                    ></textarea>
+                </div>
+
+
+                <button type="submit" id="analyzeBtn">
+                    Analyze Resume
+                </button>
+
+            </form>
+
+            <p id="statusMessage"></p>
+
+        </section>
+
+
+        <section id="results" class="results hidden">
+
+            <h2>Analysis Results</h2>
+
+            <div class="score-card">
+
+                <h3>Resume-Job Similarity</h3>
+
+                <div class="score" id="matchScore">
+                    0%
+                </div>
+
+                <p>
+                    Calculated using TF-IDF and Cosine Similarity
+                </p>
+
+            </div>
+
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+                    <h3>Resume Skills</h3>
+                    <ul id="resumeSkills"></ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Required Skills</h3>
+                    <ul id="requiredSkills"></ul>
+                </div>
+
+                <div class="skill-card matched">
+                    <h3>Matched Skills</h3>
+                    <ul id="matchedSkills"></ul>
+                </div>
+
+                <div class="skill-card missing">
+                    <h3>Missing Skills</h3>
+                    <ul id="missingSkills"></ul>
+                </div>
+
+            </div>
+
+
+            <div class="resume-text-card">
+                <h3>Extracted Resume Text</h3>
+
+                <pre id="resumeText"></pre>
+            </div>
+
+            <!-- Skill Gap Chart -->
+<div class="skill-chart-container">
+    <h3>Skill Gap Overview</h3>
+    <canvas id="skillGapChart"></canvas>
+</div>
+
+        </section>
+
+        <section id="historySection" class="history-section">
+    <div class="section-heading">
+        <h2>Analysis History</h2>
+        <p>View your previously analyzed resumes.</p>
+    </div>
+
+    <button id="loadHistoryBtn" class="history-btn">
+        Load Analysis History
+    </button>
+
+    <p id="historyStatus"></p>
+
+    <div class="history-table-container">
+        <table id="historyTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Resume</th>
+                    <th>Match Score</th>
+                    <th>Matched Skills</th>
+                    <th>Missing Skills</th>
+                    <th>Analysis Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="historyTableBody">
+            </tbody>
+        </table>
+    </div>
+    
+</section>
+
+    </main>
+
+
+    <footer>
+        <p>AI Resume Analyzer | Built with Python and Machine Learning</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
